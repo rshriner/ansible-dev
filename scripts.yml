@@ -1,0 +1,24 @@
+# download bash scripts
+# run bash scripts
+# pass public keys into our planetexpress hosts
+
+- name: Getting scripts
+    hosts: localhost
+    connection: local
+
+
+    tasks:
+        - name: Download bash scripts #1
+          get_url:
+            url: https://static.alta3.com/projects/ansible/max_teardown.sh
+            dest: /home/student
+        - name: Download bash scripts #2
+          get_url:
+            url: https://static.alta3.com/projects/ansible/setup.sh
+            dest: /home/student
+        - name: run scripts #1
+          script:
+            cmd: /home/student/max_teardown.sh
+        - name: run scripts #2
+          script:
+            cmd: /home/student/setup.sh
